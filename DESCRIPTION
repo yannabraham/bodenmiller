@@ -1,6 +1,6 @@
 Package: bodenmiller
 Type: Package
-Title: Unstimulated, Untreated Peripheral Blood Mononuclear Cells Profilling using CyTOF
+Title: Profilling of Peripheral Blood Mononuclear Cells using CyTOF
 Version: 0.1
 Date: 2015-11-10
 Depends:
