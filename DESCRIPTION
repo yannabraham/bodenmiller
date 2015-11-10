@@ -1,0 +1,12 @@
+Package: bodenmiller
+Type: Package
+Title: Unstimulated, Untreated Peripheral Blood Mononuclear Cells Profilling using CyTOF
+Version: 0.1
+Date: 2015-11-10
+Depends:
+    R (>= 3.1.0)
+Author: Yann Abraham
+Maintainer: Yann Abraham <yann.abraham@gmail.com>
+Description: A subset of the Bodenmiller 2012 dataset for testing single cell, high dimensional methods
+License: CC0
+LazyData: TRUE
