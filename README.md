@@ -14,3 +14,7 @@ Install it from github with:
 ```{r}
 devtools::install_github("yannabraham/bodenmiller")
 ```
+
+## Travis Build Status
+
+[![Travis-CI Build Status](https://travis-ci.org/yannabraham/bodenmiller.svg?branch=master)](https://travis-ci.org/yannabraham/bodenmiller)
