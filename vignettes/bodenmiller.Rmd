@@ -2,11 +2,11 @@
 title: "High Dimensional Single Cell Data Exploration"
 author: "Yann Abraham"
 date: "`r Sys.Date()`"
-output: html_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{High Dimensional Single Cell Data Exploration}
-  %\VignetteEngine{knitr:rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup,echo=FALSE,include=FALSE}
@@ -18,7 +18,6 @@ library(reshape2)
 library(RColorBrewer)
 
 knitr::opts_chunk$set(warning=FALSE,
-                      fig.retina=1,
                       fig.keep='high',
                       fig.align='center')
 
@@ -55,7 +54,8 @@ data(refPhenoMat)
 refPhenoFrame <- melt(refPhenoMat)
 names(refPhenoFrame) <- c('cell_id','channel','value')
 ggplot(data=refPhenoFrame,aes(x=channel,y=value))+
-  geom_boxplot()
+  geom_boxplot()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 We can also use boxplots to visualize the intensity of a single channel over all populations. We first load the cell annotations, add it to the phenotypic data, and define a single color per cell type:
@@ -63,22 +63,24 @@ We can also use boxplots to visualize the intensity of a single channel over all
 ```{r annots}
 data('refAnnots')
 refPhenoFrame$Cells <- rep(refAnnots$Cells,ncol(refPhenoMat))
-cell.colors <- setNames(c('#9CA5D5', '#0015C5', '#5B6CB4', '#BFC5E8', '#C79ED0', '#850094', '#A567B1',
-                          '#DBBCE2', '#D3C6A1','#5E4500', '#BBDEB1', '#8A1923', '#B35E62', '#CEA191'),
-                        c('cd14-hladr-', 'cd14-hladrhigh', 'cd14-hladrmid', 'cd14-surf-', 'cd14+hladr-',
-                          'cd14+hladrhigh','cd14+hladrmid', 'cd14+surf-', 'cd4+', 'cd8+', 'dendritic',
-                          'igm-', 'igm+', 'nk'))
+cell.colors <- setNames(c('#9CA5D5','#0015C5','#5B6CB4','#BFC5E8','#C79ED0','#850094',
+                          '#A567B1','#DBBCE2','#D3C6A1','#5E4500','#BBDEB1','#8A1923',
+                          '#B35E62','#CEA191'),
+                        c('cd14-hladr-','cd14-hladrhigh','cd14-hladrmid','cd14-surf-',
+                          'cd14+hladr-','cd14+hladrhigh','cd14+hladrmid','cd14+surf-',
+                          'cd4+','cd8+','dendritic','igm-','igm+','nk'))
 ```
 
 And then
 
-```{r ref_pheno_pop_boxplot}
+```{r ref_pheno_pop_boxplot,fig.width=6,fig.height=4}
 cd7.pops <- refPhenoFrame %>% filter(channel=='CD7')
 ggplot(data=cd7.pops,
        aes(x=Cells,y=value,fill=Cells))+
   geom_boxplot()+
   scale_fill_manual(values=cell.colors)+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  guides(fill=FALSE)+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Alternatively one can use fan plots to visualize the trends of values of all markers in a population:
@@ -95,7 +97,7 @@ ggplot(refPhenoFrame %>% filter(Cells=='cd4+') %>% group_by(Cells,channel) %>% d
 
 For each population, the level of activation of the different pathways monitored using the functional markers can be visualized in the same way:
 
-```{r ref_func_sub_fan}
+```{r ref_func_sub_fan,fig.width=5,fig.height=3}
 data(refFuncMat)
 refFuncFrame <- melt(refFuncMat)
 names(refFuncFrame) <- c('cell_id','channel','value')
@@ -104,7 +106,7 @@ ggplot(refFuncFrame %>% filter(Cells=='cd4+') %>% group_by(Cells,channel) %>% do
                    aes(x=channel,fill=percent,group=id))+
   geom_ribbon(aes(ymin=ymin,ymax=ymax))+
   facet_wrap(~Cells)+
-  guides(fill=F)+
+  guides(fill=FALSE)+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))+
   scale_fill_fan()
 ```
@@ -124,7 +126,7 @@ untreatedFuncFrame$Treatment <- rep(untreatedAnnots$Treatment,ncol(untreatedFunc
 
 Then visualize the effects of the different stimulations on *cd4+* cells:
 
-```{r un_func_sub_fan}
+```{r un_func_sub_fan,fig.width=6,fig.height=6}
 refFuncLine <- refFuncFrame %>% filter(Cells=='cd4+') %>% group_by(Cells,channel) %>% summarise(value=median(value))
 refFuncLine <- do.call(rbind,lapply(seq(1,3),function(x) refFuncLine))
 refFuncLine$Treatment <- rep(levels(untreatedFuncFrame$Treatment),each=nlevels(refFuncLine$channel))
@@ -136,7 +138,7 @@ ggplot(untreatedFuncFrame %>% filter(Cells=='cd4+') %>% group_by(Treatment,Cells
   geom_line(data=refFuncLine,aes(y=value),
             col='black',linetype=4)+
   guides(fill=F)+
-  facet_wrap(~Cells*Treatment,ncol=1,scale='free_x')+
+  facet_wrap(~Cells*Treatment,ncol=2,scale='free_x')+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))+
   scale_fill_fan()
 ```
