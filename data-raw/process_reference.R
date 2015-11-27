@@ -23,7 +23,8 @@ refAnnots <- data.frame(
 ## Extract channel data
 refMat <- fsApply(refSet,function(ff) {
     cur.mat <- exprs(ff)
-    dimnames(cur.mat)[[2]] <- pData(parameters(ff))$desc
+    # fix the dimnames
+    dimnames(cur.mat)[[2]] <- make.names(pData(parameters(ff))$desc)
     cur.mat <- cur.mat[,c(pheno.markers,func.markers)]
     return(cur.mat)
   }
@@ -31,9 +32,6 @@ refMat <- fsApply(refSet,function(ff) {
 
 # transform using arcsinh
 refMat <- asinh(refMat/5)
-
-# fix the dimnames
-dimnames(refMat)[[2]] <- make.names(dimnames(refMat)[[2]])
 
 refPhenoMat <- refMat[,make.names(pheno.markers)]
 refFuncMat <- refMat[,make.names(func.markers)]

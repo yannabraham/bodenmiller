@@ -40,7 +40,8 @@ untreatedAnnots <- data.frame(
 ## Extract channel data
 untreatedMat <- fsApply(untreatedSet,function(ff) {
     cur.mat <- exprs(ff)
-    dimnames(cur.mat)[[2]] <- pData(parameters(ff))$desc
+    # fix the dimnames
+    dimnames(cur.mat)[[2]] <- make.names(pData(parameters(ff))$desc)
     cur.mat <- cur.mat[,c(pheno.markers,func.markers)]
     return(cur.mat)
   }
@@ -48,9 +49,6 @@ untreatedMat <- fsApply(untreatedSet,function(ff) {
 
 # transform using arcsinh
 untreatedMat <- asinh(untreatedMat/5)
-
-# fix the dimnames
-dimnames(untreatedMat)[[2]] <- make.names(dimnames(untreatedMat)[[2]])
 
 untreatedPhenoMat <- untreatedMat[,make.names(pheno.markers)]
 untreatedFuncMat <- untreatedMat[,make.names(func.markers)]
