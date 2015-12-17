@@ -10,9 +10,9 @@ There were no ERRORs or WARNINGs
 There was 1 NOTE:
 
  * checking installed package size ... NOTE
-    installed size is 17.6Mb
+    installed size is 8.7Mb
 
-  This is a data package that will not require any significant update
+  This is a data package that will not require any significant update. This has been agreed upon with the CRAN team
 
 ## Downstream dependencies
 

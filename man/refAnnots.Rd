@@ -7,7 +7,8 @@
 \format{a data.frame with 15792 rows and 2 variables:
 \itemize{
    \item{Source}{the name of the source (fcs) file}
-   \item{Cells}{the cell type for the corresponding row in \code{\link{refMat}}}
+   \item{Cells}{the cell type for the corresponding row in \code{\link{refPhenoMat}}
+     or \code{\link{refFuncMat}}}
 }}
 \source{
 \url{http://reports.cytobank.org/105/v2}
@@ -16,7 +17,7 @@
 refAnnots
 }
 \description{
-A \code{data.frame} containing the source file and cell type for every cell in \code{\link{refMat}},
+A \code{data.frame} containing the source file and cell type for every cell in
 \code{\link{refPhenoMat}} and \code{\link{refFuncMat}}. See
 \href{http://www.nature.com/nbt/journal/v30/n9/full/nbt.2317.html}{Bodenmiller et al 2012}
 for details.

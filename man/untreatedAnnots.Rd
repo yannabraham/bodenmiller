@@ -7,8 +7,10 @@
 \format{a data.frame with 15792 rows and 2 variables:
 \itemize{
    \item{Source}{the name of the source (fcs) file}
-   \item{Treatment}{the treatment for the corresponding row in \code{\link{refMat}}}
-   \item{Cells}{the cell type for the corresponding row in \code{\link{refMat}}}
+   \item{Treatment}{the treatment for the corresponding row in \code{\link{refPhenoMat}}
+     or \code{\link{refFuncMat}}}
+   \item{Cells}{the cell type for the corresponding row in \code{\link{refPhenoMat}}
+     or \code{\link{refFuncMat}}}
 }}
 \source{
 \url{http://reports.cytobank.org/105/v2}
@@ -18,7 +20,7 @@ untreatedAnnots
 }
 \description{
 A \code{data.frame} containing the source file, cell type and stimulation for every cell in
-\code{\link{refMat}}, \code{\link{refPhenoMat}} and \code{\link{refFuncMat}}.
+\code{\link{refPhenoMat}} and \code{\link{refFuncMat}}.
 Stimulations include BCR/FcR-XL, PMA/Ionomycin and vanadate.See
 \href{http://www.nature.com/nbt/journal/v30/n9/full/nbt.2317.html}{Bodenmiller et al 2012}
 for details.

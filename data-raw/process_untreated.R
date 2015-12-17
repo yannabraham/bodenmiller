@@ -42,7 +42,7 @@ untreatedMat <- fsApply(untreatedSet,function(ff) {
     cur.mat <- exprs(ff)
     # fix the dimnames
     dimnames(cur.mat)[[2]] <- make.names(pData(parameters(ff))$desc)
-    cur.mat <- cur.mat[,c(pheno.markers,func.markers)]
+    cur.mat <- cur.mat[,make.names(c(pheno.markers,func.markers))]
     return(cur.mat)
   }
 )
@@ -53,4 +53,4 @@ untreatedMat <- asinh(untreatedMat/5)
 untreatedPhenoMat <- untreatedMat[,make.names(pheno.markers)]
 untreatedFuncMat <- untreatedMat[,make.names(func.markers)]
 
-devtools::use_data(untreatedAnnots,untreatedMat, untreatedPhenoMat, untreatedFuncMat,overwrite=TRUE)
+devtools::use_data(untreatedAnnots, untreatedPhenoMat, untreatedFuncMat,overwrite=TRUE)

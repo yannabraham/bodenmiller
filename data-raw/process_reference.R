@@ -25,7 +25,7 @@ refMat <- fsApply(refSet,function(ff) {
     cur.mat <- exprs(ff)
     # fix the dimnames
     dimnames(cur.mat)[[2]] <- make.names(pData(parameters(ff))$desc)
-    cur.mat <- cur.mat[,c(pheno.markers,func.markers)]
+    cur.mat <- cur.mat[,make.names(c(pheno.markers,func.markers))]
     return(cur.mat)
   }
 )
@@ -36,4 +36,4 @@ refMat <- asinh(refMat/5)
 refPhenoMat <- refMat[,make.names(pheno.markers)]
 refFuncMat <- refMat[,make.names(func.markers)]
 
-devtools::use_data(refAnnots,refMat, refPhenoMat, refFuncMat,overwrite=TRUE)
+devtools::use_data(refAnnots, refPhenoMat, refFuncMat,overwrite=TRUE)
