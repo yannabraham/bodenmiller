@@ -1,11 +1,12 @@
 Package: bodenmiller
 Type: Package
 Title: Profilling of Peripheral Blood Mononuclear Cells using CyTOF
-Version: 0.1
+Version: 0.1.1
 Depends:
     R (>= 3.1.0)
 Suggests:
     ggplot2,
+    cytofan,
     dplyr,
     reshape2,
     RColorBrewer,
@@ -16,6 +17,7 @@ Authors@R: c(person('Yann','Abraham',email='yann.abraham@gmail.com',role=c('aut'
 Description: This data package contains a subset of the Bodenmiller et al, Nat Biotech 2012 dataset for testing single cell, high dimensional analysis and visualization methods.
 License: CC0
 LazyData: TRUE
+LazyDataCompression: xz
 URL: https://github.com/yannabraham/bodenmiller
 BugReports: https://github.com/yannabraham/bodenmiller/issues
 VignetteBuilder: knitr
