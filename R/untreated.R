@@ -3,7 +3,7 @@
 #' a \code{matrix} containing the signal intensity for phenotypic markers measured using CyTOF
 #' on different cell types, after stimulation with BCR/FcR-XL, PMA/Ionomycin
 #' and vanadate. See
-#' \href{http://www.nature.com/nbt/journal/v30/n9/full/nbt.2317.html}{Bodenmiller et al 2012}
+#' \href{https://www.nature.com/articles/nbt.2317/}{Bodenmiller et al 2012}
 #' for details.
 #'
 #' @format a matrix with 15792 rows and 9 variables:
@@ -18,7 +18,7 @@
 #'    \item{ CD3 }
 #'    \item{ CD123 }
 #' }
-#' @source \url{http://reports.cytobank.org/105/v2}
+#' @source \url{https://reports.cytobank.org/105/v2/}
 "untreatedPhenoMat"
 
 #' Untreated Samples with 4 Different Treatments (Functional)
@@ -26,7 +26,7 @@
 #' a \code{matrix} containing the signal intensity for functional markers measured using CyTOF
 #' on different cell types, after stimulation with BCR/FcR-XL, PMA/Ionomycin
 #' and vanadate. See
-#' \href{http://www.nature.com/nbt/journal/v30/n9/full/nbt.2317.html}{Bodenmiller et al 2012}
+#' \href{https://www.nature.com/articles/nbt.2317/}{Bodenmiller et al 2012}
 #' for details.
 #'
 #' @format a matrix with 15792 rows and 14 variables:
@@ -46,7 +46,7 @@
 #'    \item{ pZap70 }
 #'    \item{ pStat3 }
 #' }
-#' @source \url{http://reports.cytobank.org/105/v2}
+#' @source \url{https://reports.cytobank.org/105/v2/}
 "untreatedFuncMat"
 
 #' Untreated Samples with 4 Different Treatments (Annotation)
@@ -54,7 +54,7 @@
 #' A \code{data.frame} containing the source file, cell type and stimulation for every cell in
 #' \code{\link{refPhenoMat}} and \code{\link{refFuncMat}}.
 #' Stimulations include BCR/FcR-XL, PMA/Ionomycin and vanadate.See
-#' \href{http://www.nature.com/nbt/journal/v30/n9/full/nbt.2317.html}{Bodenmiller et al 2012}
+#' \href{https://www.nature.com/articles/nbt.2317/}{Bodenmiller et al 2012}
 #' for details.
 #'
 #' @format a data.frame with 15792 rows and 2 variables:
@@ -65,5 +65,5 @@
 #'    \item{Cells}{the cell type for the corresponding row in \code{\link{refPhenoMat}}
 #'      or \code{\link{refFuncMat}}}
 #' }
-#' @source \url{http://reports.cytobank.org/105/v2}
+#' @source \url{https://reports.cytobank.org/105/v2/}
 "untreatedAnnots"

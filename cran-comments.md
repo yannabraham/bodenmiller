@@ -3,6 +3,7 @@
 This is release 0.1.1 of bodenmiller, where we have made the following changes
 
  * add `LazyDataCompression: xz` to DESCRIPTION to decrease package size
+ * updated old links in documentation
  
 ## test environments
 
