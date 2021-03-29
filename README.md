@@ -13,7 +13,7 @@ For each dataset there are 3 additional matrix:
 
  * `refPhenotMat` and `untreatedPhenoMat` the signal intensity for the 9 phenotypic channels
  * `refFuncMat` and `untreatedFuncMat` the signal intensity for the 14 functional channels
- * `refAnnots` and `untreatedAnnots` the source file, cell type assignement and stimulation (where appropriate)
+ * `refAnnots` and `untreatedAnnots` the source file, cell type assignment and stimulation (where appropriate)
 
 Install it from github with:
 
