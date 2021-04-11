@@ -16,8 +16,10 @@ Authors@R: c(person('Yann','Abraham',email='yann.abraham@gmail.com',role=c('aut'
              person('Bernd','Bodenmiller',email='bernd.bodenmiller@imls.uzh.ch',role='aut'))
 Description: This data package contains a subset of the Bodenmiller et al, Nat Biotech 2012 dataset for testing single cell, high dimensional analysis and visualization methods.
 License: CC0
+Encoding: UTF-8
 LazyData: TRUE
 LazyDataCompression: xz
 URL: https://github.com/yannabraham/bodenmiller
 BugReports: https://github.com/yannabraham/bodenmiller/issues
 VignetteBuilder: knitr
+RoxygenNote: 7.1.1
